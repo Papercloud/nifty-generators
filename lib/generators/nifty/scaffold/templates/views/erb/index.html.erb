@@ -1,30 +1,33 @@
 <%% title "<%= plural_name.titleize %>" %>
 
-<table>
-  <!--
-  <tr>
+
   <%- for attribute in model_attributes -%>
     <th><%= attribute.human_name.titleize %></th>
   <%- end -%>
-  </tr>
-  -->
+
+<ul>
   <%% for <%= instance_name %> in @<%= instances_name %> %>
-    <tr>
-    <%- for attribute in model_attributes -%>
-      <td><%%= <%= instance_name %>.<%= attribute.name %> %></td>
-    <%- end -%>
-    <%- if action? :show -%>
-      <td><%%= link_to "Show", <%= item_path %> %></td>
-    <%- end -%>
-    <%- if action? :edit -%>
-      <td><%%= link_to "Edit", <%= item_path :action => :edit %> %></td>
-    <%- end -%>
-    <%- if action? :destroy -%>
-      <td><%%= link_to "Destroy", <%= item_path %>, :confirm => 'Are you sure?', :method => :delete %></td>
-    <%- end -%>
-    </tr>
+    <li class="<%= instance_name %>">
+      <ul>
+        <%- for attribute in model_attributes -%>
+          <li>
+            <%= attribute.human_name.titleize %>: <%%= <%= instance_name %>.<%= attribute.name %> %></td>
+          </li>
+        <%- end -%>
+      </ul>
+
+      <%- if action? :show -%>
+        <td><%%= link_to "Show", <%= item_path %> %></td>
+      <%- end -%>
+      <%- if action? :edit -%>
+        <td><%%= link_to "Edit", <%= item_path :action => :edit %> %></td>
+      <%- end -%>
+      <%- if action? :destroy -%>
+        <td><%%= link_to "Destroy", <%= item_path %>, :confirm => 'Are you sure?', :method => :delete %></td>
+      <%- end -%>
+    </li>
   <%% end %>
-</table>
+</ul>
 
 <%- if action? :new -%>
 <p><%%= link_to "New <%= singular_name.titleize %>", <%= item_path :action => :new %> %></p>
