@@ -1,10 +1,5 @@
 <%% title "<%= plural_name.titleize %>" %>
 
-
-  <%- for attribute in model_attributes -%>
-    <th><%= attribute.human_name.titleize %></th>
-  <%- end -%>
-
 <ul>
   <%% for <%= instance_name %> in @<%= instances_name %> %>
     <li class="<%= instance_name %>">
@@ -17,13 +12,13 @@
       </ul>
 
       <%- if action? :show -%>
-        <td><%%= link_to "Show", <%= item_path %> %></td>
+        <%%= link_to "Show", <%= item_path %> %><br/>
       <%- end -%>
       <%- if action? :edit -%>
-        <td><%%= link_to "Edit", <%= item_path :action => :edit %> %></td>
+        <%%= link_to "Edit", <%= item_path :action => :edit %> %></br>
       <%- end -%>
       <%- if action? :destroy -%>
-        <td><%%= link_to "Destroy", <%= item_path %>, :confirm => 'Are you sure?', :method => :delete %></td>
+        <%%= link_to "Destroy", <%= item_path %>, :confirm => 'Are you sure?', :method => :delete %></br>
       <%- end -%>
     </li>
   <%% end %>
