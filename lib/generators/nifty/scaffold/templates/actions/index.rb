@@ -1,3 +1,3 @@
   def index
-    @<%= instances_name %> = <%= class_name %>.all
+    @<%= instances_name %> = <%= class_name %>.page(params[:page])
   end
