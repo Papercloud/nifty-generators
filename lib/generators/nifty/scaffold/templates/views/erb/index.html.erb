@@ -27,3 +27,5 @@
 <%- if action? :new -%>
 <p><%%= link_to "New <%= singular_name.titleize %>", <%= item_path :action => :new %> %></p>
 <%- end -%>
+
+<%%= paginate @<%= instances_name %> %>
